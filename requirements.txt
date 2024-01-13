@@ -1,0 +1,9 @@
+tqdm
+torch
+numpy
+transformers[torch]
+matplotlib
+requests
+torchvision
+datasets
+emoji
