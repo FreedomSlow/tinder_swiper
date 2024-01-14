@@ -68,6 +68,7 @@ class UserProfile:
 
     def _parse_data(self, data):
         self.id = data["_id"]
+        # Convert miles to units that normal people use
         self.distance = data.get("distance_mi", 0) / KM_IN_MILES
 
         self.name = data.get("name", "Unknown")
@@ -82,8 +83,13 @@ class UserProfile:
 
         self.gender = ["Male", "Female", "Unknown"][data.get("gender", 2)]
         self.jobs = list(
-            map(lambda job: {"title": job.get("title", {}).get("name"), "company": job.get("company", {}).get("name")},
-                data.get("jobs", [])))
+            map(
+                lambda job: {
+                    "title": job.get("title", {}).get("name"),
+                    "company": job.get("company", {}).get("name")},
+                data.get("jobs", [])
+            )
+        )
         self.schools = list(map(lambda school: school["name"], data.get("schools", [])))
 
     def bio_to_dict(self):

@@ -44,7 +44,7 @@ def make_pretty_text(text, max_len=90):
 
 def display_bio(profile_id: str):
     try:
-        bio_text.config(text=make_pretty_text([profile_id]["bio"]))
+        bio_text.config(text=make_pretty_text(bios[profile_id]["bio"]))
         name_age.config(
             text=f"{bios[profile_id]['name']}: {bios[profile_id]['age']}",
             font=("Helvetica", 32)
